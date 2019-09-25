@@ -1,24 +1,20 @@
-# python3-ml
+# java-ext
 
-Template for deploying fastai and other machine learning models.
+Java8 OpenFaaS Template that pulls GitHub Modules using JitPack
 
 ## Templates available in this repository:
 
-- fastai-vision
-- opencv-face
-- gensim-text
-- fastai-statedict
-- More to come
+- java-img
 
 ## Downloading the templates
 ```
-faas-cli template pull https://github.com/dermatologist/python3-ml
+faas-cli template pull https://github.com/dermatologist/java-ext
 ```
 
 # Using the template
 Create a new function (Check the templates available above)
 ```
-faas-cli new --lang <template-name> <fn-name>
+faas-cli new --lang java-img <fn-name>
 ```
 Build, push, and deploy
 ```
