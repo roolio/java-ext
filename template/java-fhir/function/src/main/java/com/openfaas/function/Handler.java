@@ -34,17 +34,17 @@ public class Handler implements com.openfaas.model.IHandler {
             for (Bundle.BundleEntryComponent component: components){
                 Resource resource = component.getResource();
                 if(resource.getResourceType() == ResourceType.Patient){
-                    patient = resource;
+                    patient = (Patient)resource;
                 }
                 if(resource.getResourceType() == ResourceType.Observation){
-                    observation = resource;
+                    observation = (Observation)resource;
                 }
                 if(resource.getResourceType() == ResourceType.Subscription){
-                    subscription = resource;
+                    subscription = (Subscription)resource;
                 }
                 if(resource.getResourceType() == ResourceType.CarePlan){
-                    resource.setId("NewId");
-                    carePlan = resource;
+                    carePlan = (CarePlan)resource;
+                    carePlan.setId("NewId");
                 }
             }
 
