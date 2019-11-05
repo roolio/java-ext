@@ -40,6 +40,7 @@ USER app
 ENV upstream_url="http://127.0.0.1:8082"
 ENV mode="http"
 ENV CLASSPATH="/home/app/entrypoint-1.0/lib/*"
+ENV MODEL_PATH="/home/app/model/"
 
 ENV fprocess="java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap com.openfaas.entrypoint.App"
 EXPOSE 8080
