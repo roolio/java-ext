@@ -20,7 +20,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'ai.h2o:h2o-genmodel:3.26.0.9'
     implementation 'ai.h2o:h2o-genmodel-ext-xgboost:3.26.0.9'
-    implementation 'com.github.username.repo:module:branch-SNAPSHOT'
+    // implementation 'com.github.username.repo:module:branch-SNAPSHOT'
     // Single module implementation 'com.github.username:repo:branch-SNAPSHOT'
 
 

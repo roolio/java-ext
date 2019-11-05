@@ -13,8 +13,10 @@ import hex.genmodel.MojoModel;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import com.google.gson.*;
+
 // Your function imported from GitHub
-import in.co.dermatologist.YourClass;
+// import in.co.dermatologist.YourClass;
 
 public class Handler implements com.openfaas.model.IHandler {
 
@@ -27,19 +29,19 @@ public class Handler implements com.openfaas.model.IHandler {
             // Request Bundle
             // Bundle bundle_in = parser.parseResource(Bundle.class,req.getBody());
             Received received = gson.fromJson(req.getBody(), Received.class);
-            String model = System.getenv("MODEL_PATH") + "model.zip";
+            String h2oModel = System.getenv("MODEL_PATH") + "model.zip";
 
             EasyPredictModelWrapper.Config config = new EasyPredictModelWrapper.Config()
                     //.setModel(MojoModel.load("/home/bell/Documents/work/temp/2019-11-04_13:55:10.zip"))
-                    .setModel(MojoModel.load(model))
+                    .setModel(MojoModel.load(h2oModel))
                     .setEnableContributions(true);
             //.setEnableLeafAssignment(true);
             EasyPredictModelWrapper model = new EasyPredictModelWrapper(config);
 
             RowData row = new RowData();
-            Iterator payloadIterator = received.payload();
+            Iterator payloadIterator = received.payload().iterator();
             while(payloadIterator.hasNext()) {
-                row.put(iterator.next(), iterator.next());
+                row.put(payloadIterator.next().toString(), payloadIterator.next());
             }
             BinomialModelPrediction p = model.predictBinomial(row);
             received.setPrediction(p.label);
@@ -64,13 +66,13 @@ public class Handler implements com.openfaas.model.IHandler {
 // This template uses the same class for both.
 class Received {
     private String Prediction;
-    private ArrayList<long> Probability = new ArrayList<long>();
+    private ArrayList<Double> Probability = new ArrayList<>();            ;
 
     private ArrayList<String> Payload;
 
     Received (){}
 
-    public int prediction() { return this.Prediction; }
+    public String prediction() { return this.Prediction; }
     public ArrayList<String> payload() { return this.Payload; }
     public void setPayload(ArrayList<String> payload){
         this.Payload = payload;

@@ -32,6 +32,7 @@ RUN chmod +x /usr/bin/fwatchdog
 RUN addgroup -S app && adduser -S -g app app
 WORKDIR /home/app
 COPY --from=builder /home/app/entrypoint/build/distributions/entrypoint-1.0.zip ./entrypoint-1.0.zip
+COPY --from=builder /home/app/function/ /home/app/function/
 RUN unzip ./entrypoint-1.0.zip
 
 RUN chown -R app /home/app
@@ -40,7 +41,7 @@ USER app
 ENV upstream_url="http://127.0.0.1:8082"
 ENV mode="http"
 ENV CLASSPATH="/home/app/entrypoint-1.0/lib/*"
-ENV MODEL_PATH="/home/app/model/"
+ENV MODEL_PATH="/home/app/function/"
 
 ENV fprocess="java -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap com.openfaas.entrypoint.App"
 EXPOSE 8080
