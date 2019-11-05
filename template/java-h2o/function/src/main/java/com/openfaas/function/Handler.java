@@ -50,7 +50,7 @@ public class Handler implements com.openfaas.model.IHandler {
             }
 //            ArrayList<String> list = new ArrayList<String>();
 
-
+            res.setBody(gson.toJson(received));
         }
     	catch(Exception e){
  
@@ -80,7 +80,7 @@ class Received {
     public void setPrediction(String prediction){
         this.Prediction = prediction;
     }
-    public void setProbability(long probability){
+    public void setProbability(Double probability){
         this.Probability.add(probability);
     }
 
