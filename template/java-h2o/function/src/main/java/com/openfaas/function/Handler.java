@@ -1,7 +1,7 @@
-"""
+/*
 * Template by Bell Eapen
 * https://nuchange.ca
-"""
+*/
 package com.openfaas.function;
 
 import com.openfaas.model.IHandler;
@@ -30,16 +30,16 @@ public class Handler implements com.openfaas.model.IHandler {
 
         try{
 
-            """
+            /*
             Example Input:
             curl -X POST -H "Content-Type: text/plain" --data "{Payload: ["Z71.0", "0"]}" http://localhost:8089/
-            """
+            */
             Received received = gson.fromJson(req.getBody(), Received.class);
-            """
+            /*
             Change model filename here.
             Add the model to the root folder with the function name
             in the same folder as build.gradle and settings.gradle.
-            """
+            */
             String h2oModel = System.getenv("MODEL_PATH") + "model.zip";
 
             EasyPredictModelWrapper.Config config = new EasyPredictModelWrapper.Config()
@@ -60,10 +60,10 @@ public class Handler implements com.openfaas.model.IHandler {
                 received.setProbability(p.classProbabilities[i]);
             }
 
-            """
+            /*
             Example output:
             {"Prediction":"0","Probability":[0.9368596161735153,0.06314038382648467],"Payload":["Z71.0","0"]}
-            """
+            */
             res.setBody(gson.toJson(received));
         }
     	catch(Exception e){
@@ -75,11 +75,11 @@ public class Handler implements com.openfaas.model.IHandler {
     }
 }
 
-"""
+/*
 Request is mapped into an instance of this class
 Create a class for response like this.
 This template uses the same class for both.
-"""
+*/
 class Received {
     private String Prediction;
     private ArrayList<Double> Probability = new ArrayList<>();            ;
