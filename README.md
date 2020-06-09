@@ -13,6 +13,20 @@ Java8 OpenFaaS Template that pulls GitHub Modules using JitPack
 faas-cli template pull https://github.com/dermatologist/java-ext
 ```
 
+## Citation
+* Please cite the following article:
+```
+@misc{eapen2020serverless,
+    title={Serverless on FHIR: Deploying machine learning models for healthcare on the cloud},
+    author={Bell Raj Eapen and Kamran Sartipi and Norm Archer},
+    year={2020},
+    eprint={2006.04748},
+    archivePrefix={arXiv},
+    primaryClass={cs.CY}
+}
+
+```
+
 # Using the template
 Create a new function (Check the templates available above)
 ```
