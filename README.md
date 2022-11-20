@@ -8,6 +8,15 @@ Java8 OpenFaaS Template that pulls GitHub Modules using JitPack
 - java-fhir - FHIR based ML Model deployments for digital health. *paper in print*
 - java-h2o - Template for deploying [h2o](http://h2o.ai) MOJO models for predictions.[[Details](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/productionizing.html)]
 
+
+## use for H2O models
+
+- execute script model_example.R
+- copy the generated model to the root folder of the function
+- (the model should be named model.zip)
+
+
+
 ## Downloading the templates
 ```
 faas-cli template pull https://github.com/dermatologist/java-ext
