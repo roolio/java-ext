@@ -14,8 +14,8 @@ Java8 OpenFaaS Template that pulls GitHub Modules using JitPack
 - execute script model_example.R
 - copy the generated model to the root folder of the function
 - (the model should be named model.zip)
-
-
+- faas new myfunction --lang java-h2o
+- test function curl -X POST -H "Content-Type: application/json" --data '{"Payload" : ["AGE", "68","RACE", "2","PSA", "31.9","GLEASON", "6"] }'  http://$OPENFAAS_URL/function/myfunction
 
 ## Downloading the templates
 ```

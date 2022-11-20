@@ -67,7 +67,7 @@ public class Handler implements com.openfaas.model.IHandler {
             res.setBody(gson.toJson(received));
         }
     	catch(Exception e){
- 
+            res.setBody(e.toString());
             // Display HTML form.
     	}
 
